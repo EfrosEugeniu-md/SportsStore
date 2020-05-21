@@ -5,7 +5,7 @@ import {ProductRepository} from '../model/product.repository';
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'store',
- // moduleId: module.id,
+  // moduleId: module.id,
   templateUrl: 'store.component.html'
 })
 export class StoreComponent {
@@ -39,9 +39,8 @@ export class StoreComponent {
     this.changePage(1);
   }
 
-  get pageNumbers(): number[] {
-    return Array(Math.ceil(this.repository
-      .getProducts(this.selectedCategory).length / this.productsPerPage))
-      .fill(0).map((x, i) => i + 1);
+  get pageCount(): number {
+    return Math.ceil(this.repository
+      .getProducts(this.selectedCategory).length / this.productsPerPage);
   }
 }
